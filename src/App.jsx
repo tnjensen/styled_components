@@ -16,7 +16,6 @@ function App() {
   const [isActive, setIsActive] = useState(true);
   const [counter, setCounter] = useState(0);
   const [showComponent, setShowComponent] = useState(true);
-  const [showTimer, setShowTimer] = useState(true);
 
   function onButtonClick(){
     setIsActive(!isActive);
