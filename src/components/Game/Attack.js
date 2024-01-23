@@ -9,7 +9,7 @@ export function reducer(state,action){
         if(Math.random() <= 0.5){
           return {hitPoints: state.hitPoints - action.payload};
         }
-        return {hitPoints: state.hitPoints - action.payload*4};        
+        return {hitPoints: state.hitPoints - action.payload * 4};        
       }
       else {
         return {hitPoints: 0}
