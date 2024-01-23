@@ -7,6 +7,7 @@ import {create} from 'zustand';
 import {shallow} from 'zustand/shallow';
 import Cart from './components/Cart/Cart';
 import ZustandCart from './components/ZustandCart/ZustandCart';
+import Attack from './components/Game/Attack';
 
 //Using only create, strict
 const useProductsStore = create((set) => ({
@@ -173,10 +174,11 @@ function App() {
       <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'addAmount', payload: 10})}>Add 10</button>
       <button onClick={() => dispatch({type: 'reset'})}>Reset</button> */}
-      <div>Enemy hit points: {state.hitPoints}
+      {/* <div>Enemy hit points: {state.hitPoints}
       <p>{state.hitPoints === 0 ? "You've died!" : ""}</p>
       <p>{state.hitPoints === 0 ? <button onClick={() => dispatch({type: 'reset'})}>Play again</button> : <button onClick={() => dispatch({type: 'attack', payload: 10})}>Attack</button>}</p>
-      </div>
+      </div> */}
+      <Attack />
       <ThemeContext.Provider value={{theme, toggleTheme}}>
       <div>
           <MyThemeComponent /> 
