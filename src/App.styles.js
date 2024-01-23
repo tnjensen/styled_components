@@ -42,3 +42,8 @@ export const ThemedButton = styled.button`
     color: white;
     cursor: pointer;
 `;
+
+export const Background = styled.body`
+background-color: ${(props) => (props.isDark ? 'black' : 'white')};
+color:  ${(props) => (props.isDark ? 'white' : 'black')};
+`;

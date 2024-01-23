@@ -95,7 +95,7 @@ export function reducer(state,action){
     }
 }
 
-function App(){
+function Cart(){
     const [state,dispatch] = useReducer(reducer, initialState);
 
     return(
@@ -129,4 +129,4 @@ function App(){
         </div>
     );
 }
-export default App;
+export default Cart;
