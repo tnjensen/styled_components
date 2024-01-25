@@ -1,13 +1,30 @@
 import {create} from 'zustand';
 import {shallow} from 'zustand/shallow';
 
-const useProductsStore = create((set) => ({
+const initialState = {cart: [], totalPrice: 0};
+
+const useProductsStore = create((set,get) => ({
+    cart: initialState.cart,
     totalPrice: 0,
-    addToCart: (productId) => {
-        const product = products.findIndex((p) => p.id === productId);
-        set((state) => ({
-            totalPrice: state.totalPrice + product.price,
-        }));
+    addToCart: (product) => {
+        const cart = get().cart;
+        const cartItem = cart.find(p => p.id === product.id);
+        if(cartItem){
+            const updatedCart = cart.map(item =>
+                item.id === product.id ? {...item, quantity: item.quantity + 1} : item
+            )
+            set((state) => ({
+                cart: updatedCart,
+                totalPrice: state.totalPrice + product.price,
+            }))
+        }else{
+            const updatedCart = [...cart, {...product, quantity: 1}]
+            set(state =>({
+                cart: updatedCart,
+                totalPrice: state.totalPrice + product.price,
+            }))
+        }
+        
     },
    /*  addOne: () => set((state) => ({count: state.count + 1})), */
     clearCart: () => set({totalPrice:0}),
@@ -57,7 +74,7 @@ function ZustandCart(){
                 Clear cart
             </button>
         </div>
-        <div>{totalPrice}</div>
+        <div>Total: {totalPrice}</div>
         <hr />
         <div>
             {products.map((product) => {
